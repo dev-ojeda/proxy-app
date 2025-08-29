@@ -2,11 +2,10 @@ const express = require("express");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpecs = require("./swagger");
 const localRoutes = require("./routes/localRoutes");
-const proxyRoutes= require("./routes/proxyRoutes");
+const proxyRoutes = require("./routes/proxyRoutes");
 
 const app = express();
 const PORT = 3000;
-
 var options = {
   explorer: true
 };

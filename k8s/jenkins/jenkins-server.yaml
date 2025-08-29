@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-1730342048
+  namespace: default
+  labels:
+    app.kubernetes.io/component: jenkins-controller
+    app.kubernetes.io/instance: jenkins-1730342048
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: jenkins-1730342048
+spec:
+  clusterIP: 10.106.10.250
+  clusterIPs:
+  - 10.106.10.250
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/component: jenkins-controller
+    app.kubernetes.io/instance: jenkins-1730342048
+  sessionAffinity: None
+  type: LoadBalancer

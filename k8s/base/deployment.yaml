@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-react-next-deployment
+  labels:
+    app: app-react-next
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-react-next
+  template:
+    metadata:
+      labels:
+        app: app-react-next
+    spec:
+      containers:
+      - name: app-react-next
+        image: docker.io/devojeda/app-react-next:dev
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+          limits:
+            cpu: "200m"
+            memory: "512Mi"
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: regcred
+      # nodeSelector:
+      #   role: worker
+      #   kubernetes.io/hostname: multinode-m02
